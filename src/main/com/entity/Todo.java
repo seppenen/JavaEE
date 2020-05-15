@@ -4,25 +4,40 @@ package entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
 public class Todo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String task;
     private LocalDate dueDate;
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", task='" + task + '\'' +
+                ", dueDate=" + dueDate +
+                ", isCompleted=" + isCompleted +
+                ", dateCompleted=" + dateCompleted +
+                ", dateCreated=" + dateCreated +
+                '}';
+    }
+
     private boolean isCompleted;
     private LocalDate dateCompleted;
     private LocalDate dateCreated;
 
-    @PrePersist     // Вызывает метод до исполнения всего остольного кода
-    private void init(){
 
+    @PrePersist
+    private void init(){
         setDateCreated(LocalDate.now());
-        System.out.println("init()");
     }
+
+
 
     public Long getId() {
         return id;
@@ -31,6 +46,8 @@ public class Todo {
     public void setId(Long id) {
         this.id = id;
     }
+
+
 
     public String getTask() {
         return task;
@@ -48,12 +65,12 @@ public class Todo {
         this.dueDate = dueDate;
     }
 
-    public boolean isCompleted() {
+    public boolean isIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(boolean completed) {
-        isCompleted = completed;
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 
     public LocalDate getDateCompleted() {
@@ -70,6 +87,11 @@ public class Todo {
 
     public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
-        System.out.println("setDateCreated() " +dateCreated);
     }
+
+
+
+
+
+
 }
