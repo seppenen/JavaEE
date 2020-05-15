@@ -2,4 +2,4 @@
 
 
 
-Restful service using JAXW.
+Restful service using JAXWS
