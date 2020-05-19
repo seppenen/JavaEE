@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="JAX-RS" type="JAX-RS">
+  <library name="JPA 1.0-JPA 1.0">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javax.ws.rs-api-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javaee.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

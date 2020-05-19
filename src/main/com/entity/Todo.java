@@ -14,6 +14,9 @@ public class Todo {
 
     private String task;
     private LocalDate dueDate;
+    private boolean isCompleted;
+    private LocalDate dateCompleted;
+    private LocalDate dateCreated;
 
     @Override
     public String toString() {
@@ -27,16 +30,11 @@ public class Todo {
                 '}';
     }
 
-    private boolean isCompleted;
-    private LocalDate dateCompleted;
-    private LocalDate dateCreated;
-
 
     @PrePersist
-    private void init(){
+    private void init() {
         setDateCreated(LocalDate.now());
     }
-
 
 
     public Long getId() {
@@ -46,7 +44,6 @@ public class Todo {
     public void setId(Long id) {
         this.id = id;
     }
-
 
 
     public String getTask() {
@@ -88,10 +85,6 @@ public class Todo {
     public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
     }
-
-
-
-
 
 
 }
