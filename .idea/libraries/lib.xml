@@ -6,6 +6,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../../../apache-tomEE/lib" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/bval-jsr-2.0.3-sources.jar!/" />
     </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/../../../apache-tomEE/lib" recursive="false" />
     <jarDirectory url="file://$PROJECT_DIR$/../../../apache-tomEE/lib" recursive="false" type="SOURCES" />

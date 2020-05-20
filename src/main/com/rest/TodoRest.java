@@ -27,12 +27,22 @@ public class TodoRest {
     @Inject
     TodoService todoService;
 
+
+    @Path("status")
+    @POST
+    public Response markAsComplete(@QueryParam("id") Long id) {
+        Todo todo = todoService.findToDoById(id);
+        todo.setIsCompleted(true);
+        todoService.updateTodo(todo);
+        return Response.ok(todo).build();
+
+    }
+
     @Path("new")
     @POST
     public Response createTodo(Todo todo) {
 
         todoService.createTodo(todo);
-
         return Response.ok(todo).build();
     }
 
@@ -40,8 +50,8 @@ public class TodoRest {
     @Path("update")
     @PUT
     public Response updateTodo(Todo todo) {
-        todoService.updateTodo(todo);
 
+        todoService.updateTodo(todo);
         return Response.ok(todo).build();
     }
 
@@ -49,13 +59,22 @@ public class TodoRest {
     @Path("{id}")
     @GET
     public Todo getTodo(@PathParam("id") Long id) {
+
         return todoService.findToDoById(id);
     }
 
 
+    @Path("listall")
+    @GET
+    public List<Todo> getAllTodos() {
+
+        return todoService.getAllTodos();
+    }
+
     @Path("list")
     @GET
-    public List<Todo> getTodos() {
+    public List <Todo> getTodos() {
+
         return todoService.getTodos();
     }
 

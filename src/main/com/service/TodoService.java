@@ -1,6 +1,7 @@
 package service;
 
 import entity.Todo;
+import org.opensaml.soap.wsaddressing.To;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,7 +34,16 @@ public class TodoService {
         return entityManager.find(Todo.class, id);
     }
 
-    public List<Todo> getTodos() {
-        return entityManager.createQuery("SELECT t from Todo t", Todo.class).getResultList();
+
+    public List <Todo> getTodos() {
+        return entityManager.createQuery("SELECT t from Todo t where t.task = ?1", Todo.class)
+                .setParameter(1, "no")
+                .getResultList();
+    }
+
+    public List <Todo> getAllTodos() {
+        return entityManager.createQuery("SELECT t from Todo t", Todo.class)
+
+                .getResultList();
     }
 }

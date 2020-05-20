@@ -1,8 +1,13 @@
 package entity;
 
 
+import javax.json.bind.annotation.JsonbDateFormat;
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 @Entity
@@ -12,11 +17,18 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotEmpty(message = "Task must be set")
+    @Size(min = 10, message = "Task must me not less than 10 characters")
     private String task;
+
+    @NotEmpty(message = "Due Date must be set")
+    @FutureOrPresent(message="Due Date must be present or future")
+    @JsonbDateFormat(value ="dd.MM.yyyy")
     private LocalDate dueDate;
+
     private boolean isCompleted;
     private LocalDate dateCompleted;
-    private LocalDate dateCreated;
+    private String dateCreated;
 
     @Override
     public String toString() {
@@ -33,7 +45,8 @@ public class Todo {
 
     @PrePersist
     private void init() {
-        setDateCreated(LocalDate.now());
+
+        setDateCreated(LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
     }
 
 
@@ -78,11 +91,11 @@ public class Todo {
         this.dateCompleted = dateCompleted;
     }
 
-    public LocalDate getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
