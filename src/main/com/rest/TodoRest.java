@@ -15,9 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-/**
- * @author Seeraj
- */
+
 
 @Path("todo")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -73,7 +71,7 @@ public class TodoRest {
 
     @Path("list")
     @GET
-    public List <Todo> getTodos() {
+    public List<Todo> getTodos() {
 
         return todoService.getTodos();
     }
